@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'OpenSansRegular';
+  src: url('./fonts/opensans-regular.eot');
+  src: url('./fonts/opensans-regular.eot') format('embedded-opentype'),
+       url('./fonts/opensans-regular.woff') format('woff'),
+       url('./fonts/opensans-regular.ttf') format('truetype'),
+       url('./fonts/opensans-regular.svg#OpenSansRegular') format('svg');
+}
+@font-face {
+  font-family: 'OpenSansSemibold';
+  src: url('./fonts/opensans-semibold.eot');
+  src: url('./fonts/opensans-semibold.eot') format('embedded-opentype'),
+       url('./fonts/opensans-semibold.woff') format('woff'),
+       url('./fonts/opensans-semibold.ttf') format('truetype'),
+       url('./fonts/opensans-semibold.svg#OpenSansSemibold') format('svg');
+}
+@font-face {
+  font-family: 'oswald_regularregular';
+  src: url('./fonts/oswald-regular-webfont.eot');
+  src: url('./fonts/oswald-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/oswald-regular-webfont.woff2') format('woff2'),
+       url('./fonts/oswald-regular-webfont.woff') format('woff'),
+       url('./fonts/oswald-regular-webfont.ttf') format('truetype'),
+       url('./fonts/oswald-regular-webfont.svg#oswald_regularregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+/* Header section css starts */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: "OpenSansRegular";
+}
+ul{
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+a{
+  text-decoration: none;
+  color:white
+}
+.header_main{
+  padding:1.5rem 3rem 1rem ;
+  background-color: #5A7C5A;
+}
+.wrapper_main{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo_main img{
+  width:6rem;
+}
+.right_side_main ul{
+  display:flex;
+  gap:1.5rem;
+}
+.right_side_main ul li:first-child{
+padding-right:15px;
+border-right:2px solid;
+}
+.nav_top_main {
+  margin:1.5rem 0 auto;
+  width:100%;
+}
+.nav_top_main ul {
+  display:flex;
+  gap:1.5rem;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding:0.16rem;
+
+}
+
+.nav_top_main ul li a{
+  color:black;
+display:block;
+padding:0.5rem 0.4rem;
+border-radius: 10px;
+}
+
+.nav_top_main ul .active a{
+  background:#ff651b;
+  color:#fff;
+
+}
+.nav_top_main ul li a:hover{
+    color:white;
+border-radius: 10px;
+background:#ff651b;
+}
+.nav_top_main ul li a{
+  text-align: center;
+}
+/* Header section css ends */
