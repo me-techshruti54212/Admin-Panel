@@ -1,11 +1,11 @@
 import React from "react";
-import img1 from "../assets/logo.png";
+import img1 from "../assets/logo.svg";
 const Header = () => {
   return (
     <div className="header_main">
       <div className="wrapper_main">
         <div className="logo_main">
-          <a href="#">
+          <a href="/listusers">
             <img src={img1} alt="Logo" />
           </a>
         </div>
@@ -14,7 +14,7 @@ const Header = () => {
             <li style={{ color: "white" }}>Welcome Admin</li>
 
             <li>
-              <a href="">Log Out</a>
+              <a href="/">Log Out</a>
             </li>
           </ul>
         </div>
