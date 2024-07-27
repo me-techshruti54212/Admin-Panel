@@ -1,9 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from "../src/components/Header"
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/LoginPage/Login";
+import ListUser from "./pages/List Users/ListUsers";
 function App() {
   return (
-   <Header/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/listusers" element={<ListUser />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
