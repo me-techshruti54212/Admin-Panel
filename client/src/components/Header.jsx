@@ -14,42 +14,42 @@ const Header = () => {
             <li style={{ color: "white" }}>Welcome Admin</li>
 
             <li>
-              <a href="/">Log Out</a>
+              <a href="/"  style={{ color: "white" }}>Log Out</a>
             </li>
           </ul>
         </div>
       </div>
       <div className="nav_top_main">
-        <ul>
+        <ul className="sm:text-sm lg:text-base" >
           <li className="active">
-            <a href="home.php">Dashboard</a>
+            <a href="">Dashboard</a>
           </li>
           <li>
-            <a href="settings.php">Users</a>
+            <a href="">Users</a>
           </li>
           <li>
-            <a href="agentloclist.php">Employee</a>
+            <a href="">Employee</a>
           </li>
           <li>
-            <a href="geoloclist.php">Meeting List</a>
+            <a href="">Meeting List</a>
           </li>
           <li>
-            <a href="geoloclist.php">Withdraw List</a>
+            <a href="">Withdraw List</a>
           </li>
           <li>
-            <a href="geoloclist.php">Reported post List</a>
+            <a href="">Reported post List</a>
           </li>
           <li>
-            <a href="geoloclist.php">Change Password</a>
+            <a href="">Change Password</a>
           </li>
           <li>
-            <a href="geoloclist.php">Manage Template</a>
+            <a href="">Manage Template</a>
           </li>
           <li>
-            <a href="geoloclist.php">Manage Testimonials</a>
+            <a href="">Manage Testimonials</a>
           </li>
           <li>
-            <a href="geoloclist.php">Settings</a>
+            <a href="">Settings</a>
           </li>
         </ul>
       </div>
