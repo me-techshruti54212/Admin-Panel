@@ -8,7 +8,8 @@ const ListUser = () => {
   return (
     <>
       <Header />
-      <div className="flex justify-evenly ">
+      <div className="flex justify-between px-12">
+
         <Sidebar />
         <div>
         <div className="p-2.5 rounded-md bg-white m-3 shadow-sm">
@@ -19,6 +20,14 @@ const ListUser = () => {
           <div className="w-full">
             <div className="flex flex-col">
               <div className="bg-[#ddd] rounded-tr-md rounded-tl-md font-normal border border-slate-300 flex justify-evenly">
+                <span>S.no</span>
+                <span>User Name</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+                <span> E-Mail</span>
+                <span>User Type</span>
+                <span>Payment Status</span>
+                <span>Action</span>
                 <span>S.no</span>
                 <span>User Name</span>
                 <span>First Name</span>
