@@ -22,10 +22,10 @@ const Header = () => {
       <div className="nav_top_main">
         <ul className="sm:text-sm lg:text-base" >
           <li className="active">
-            <a href="">Dashboard</a>
+            <a href="/dashboard">Dashboard</a>
           </li>
           <li>
-            <a href="">Users</a>
+            <a href="/listusers">Users</a>
           </li>
           <li>
             <a href="">Employee</a>
