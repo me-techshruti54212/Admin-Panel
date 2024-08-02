@@ -5,6 +5,7 @@ import ListUser from "./pages/List Users/ListUsers";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ManageTemplates from "./pages/ManageTemplates/ManageTemplates";
 import EditTemplate from "./pages/EditTemplate/EditTemplate";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/manage-templates" element={<ManageTemplates/>} />
         <Route path="/edit-template" element={<EditTemplate/>} />
+        <Route path="/change-password" element={<ChangePassword/>} />
       </Routes>
     </BrowserRouter>
   );
