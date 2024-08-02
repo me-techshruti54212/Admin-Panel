@@ -20,14 +20,15 @@ const Login = () => {
   };
 
   return (
-    <div className="login_section">
-      <div className="wrapper relative">
-        <div className="heading-top">
-          <div className="flex w-full justify-center">
+    <>
+          <div className="flex w-full justify-center bg-[#9cb49c]">
             <div>
               <img src={logo} alt="Logo" className='logoImg'/>
             </div>
           </div>
+    <div className="login_section">
+      <div className="wrapper relative">
+        <div className="heading-top">
         </div>
         <div className="box">
           <div className="outer_div">
@@ -79,6 +80,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -12,6 +12,14 @@ const UserDataRow = ({number, username, firstName, lastName, email, type, paySta
               <span>{type ||"Principal"}</span>
               <span>{payStat || "paid"}</span>
               <span>{action || "action"}</span>
+              <span>{number || "1"}</span>
+              <span>{username || "TestBruc3"}</span>
+              <span>{firstName || "Test99"}</span>
+              <span>{lastName || "Test99"}</span>
+              <span>{email || "nigroid@h..	"}</span>
+              <span>{type ||"Principal"}</span>
+              <span>{payStat || "paid"}</span>
+              <span>{action || "action"}</span>
             </div>
     </>
   )
