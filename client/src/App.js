@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/LoginPage/Login";
 import ListUser from "./pages/List Users/ListUsers";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import ManageTemplates from "./pages/ManageTemplates/ManageTemplates";
+import EditTemplate from "./pages/EditTemplate/EditTemplate";
 function App() {
   return (
     <BrowserRouter>
@@ -10,6 +12,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/listusers" element={<ListUser />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/manage-templates" element={<ManageTemplates/>} />
+        <Route path="/edit-template" element={<EditTemplate/>} />
       </Routes>
     </BrowserRouter>
   );
