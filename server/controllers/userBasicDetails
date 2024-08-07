@@ -36,8 +36,8 @@ async function userBasicDetails(req, res) {
                         AND MAX(p.profile_video IS NOT NULL) 
                         AND MAX(pi.interest_id IS NOT NULL) 
                         AND MAX(ps.skill_id IS NOT NULL) 
-                    THEN 'Complete'
-                    ELSE 'Incomplete'
+                THEN 'Complete'
+                ELSE 'Incomplete'
                 END AS profile_status
             FROM
                 users u
@@ -55,11 +55,9 @@ async function userBasicDetails(req, res) {
     `;
     const [profileStatusRows] = await db.query(profileStatusQuery);
 
-    // Initialize counts for complete and incomplete users
     let completeUsers = 0;
     let incompleteUsers = 0;
 
-    // Iterate over the profile status results and assign the counts
     profileStatusRows.forEach(row => {
         if (row.profile_status === 'Complete') {
             completeUsers = row.user_count;
@@ -68,7 +66,97 @@ async function userBasicDetails(req, res) {
         }
     });
 
-    // Combine results from all queries into one response
+    // Query to get skill names and their respective user counts
+    const skillsQuery = `
+        SELECT 
+            s.name, 
+            COUNT(ps.user_id) AS user_count, 
+            (COUNT(ps.user_id) * 100.0 / (SELECT COUNT(DISTINCT user_id) FROM profile_skills)) AS percentage 
+        FROM 
+            skills s 
+        LEFT JOIN 
+            profile_skills ps ON s.id = ps.skill_id 
+        GROUP BY 
+            s.name;
+    `;
+    const [skillsRows] = await db.query(skillsQuery);
+
+    const skillNames = [];
+    const userCounts = [];
+
+    skillsRows.forEach(row => {
+        skillNames.push(row.name);
+        userCounts.push(row.percentage);
+    });
+
+    // Query to get interest category names and their respective user counts
+    const categoriesQuery = `
+        SELECT 
+            ic.name AS category_name,
+            COUNT(DISTINCT pi.user_id) AS user_count,
+            (COUNT(DISTINCT pi.user_id) * 100.0 / (SELECT COUNT(DISTINCT user_id) FROM profile_interests)) AS percentage
+        FROM 
+            interest_categories ic
+        JOIN 
+            interests i ON ic.id = i.category_id
+        JOIN 
+            profile_interests pi ON i.id = pi.interest_id
+        GROUP BY 
+            ic.name;
+    `;
+    const [categoriesRows] = await db.query(categoriesQuery);
+
+    const categoryNames = [];
+    const categoryPercentages = [];
+
+    categoriesRows.forEach(row => {
+        categoryNames.push(row.category_name);
+        categoryPercentages.push(row.percentage);
+    });
+
+    // Query to get connection status counts
+    const connectionsQuery = `
+        SELECT 
+            status,
+            COUNT(*) AS status_count
+        FROM 
+            connections
+        WHERE
+            status IN ('pending', 'accepted', 'rejected')
+        GROUP BY 
+            status;
+    `;
+    const [connectionsRows] = await db.query(connectionsQuery);
+
+    // Initialize connection status counts
+    let pendingCount = 0;
+    let acceptedCount = 0;
+    let rejectedCount = 0;
+
+    connectionsRows.forEach(row => {
+        if (row.status === 'pending') {
+            pendingCount = row.status_count;
+        } else if (row.status === 'accepted') {
+            acceptedCount = row.status_count;
+        } else if (row.status === 'rejected') {
+            rejectedCount = row.status_count;
+        }
+    });
+
+    // Query to get reported posts count
+    const reportedPostsQuery = `
+        SELECT COUNT(*) AS reported_posts_count
+        FROM report_posts;
+    `;
+    const [reportedPostsRows] = await db.query(reportedPostsQuery);
+
+    // Query to get reported users count
+    const reportedUsersQuery = `
+        SELECT COUNT(*) AS reported_users_count
+        FROM report_users;
+    `;
+    const [reportedUsersRows] = await db.query(reportedUsersQuery);
+
     res.status(200).json({
         total_users: usersRows[0].total_users,
         total_users_today: usersRows[0].total_users_today,
@@ -77,14 +165,21 @@ async function userBasicDetails(req, res) {
         total_shares: postsRows[0].total_shares,
         total_posts: postsRows[0].total_posts,
         total_posts_today: postsRows[0].total_posts_today,
-        complete_users: completeUsers,
-        incomplete_users: incompleteUsers
+        complete_profiles: completeUsers,
+        incomplete_profiles: incompleteUsers,
+        skill_names: skillNames,
+        skill_user_counts: userCounts,
+        category_names: categoryNames,
+        category_percentages: categoryPercentages,
+        pending_count: pendingCount,
+        accepted_count: acceptedCount,
+        rejected_count: rejectedCount,
+        reported_posts_count: reportedPostsRows[0].reported_posts_count,
+        reported_users_count: reportedUsersRows[0].reported_users_count
     });
-} catch (error) {
+  } catch (error) {
     console.error("Error fetching user details:", error);
-    res
-      .status(500)
-      .json({ message: "An error occurred while fetching user details" });
+    res.status(500).json({ message: "An error occurred while fetching user details" });
   }
 }
 

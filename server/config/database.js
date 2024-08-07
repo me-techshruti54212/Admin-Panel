@@ -18,4 +18,16 @@ const db = mysql.createPool({
 //     console.log('Connected to the MySQL database.');
 // });
 
+// Promisify the query function
+// const query = (sql) => {
+//     return new Promise((resolve, reject) => {
+//         db.query(sql, (error, results) => {
+//             if (error) {
+//                 reject(error);
+//             } else {
+//                 resolve(results);
+//             }
+//         });
+//     });
+// };
 module.exports = db;
