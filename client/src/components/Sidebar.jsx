@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import DashIcon from "../assets/icons/Dashboard.svg";
 import UserIcon from "../assets/icons/Users.svg";
 import MeetingIcon from "../assets/icons/Meeting.svg";
@@ -11,17 +12,19 @@ import WithdrawIcon from "../assets/icons/Withdraw.svg";
 import EmployeeIcon from "../assets/icons/Employee.svg";
 
 const Sidebar = () => {
+   const route=window.location.pathname;
+
   return (
     <>
     <div className='bg-white w-60 min-h-screen shadow-2xl'>
-        <button className='flex bg-[#5247D1] text-white gap-2 p-2 w-full items-center hover:bg-indigo-100'>
+        <Link to="/dashboard" className={`flex ${route === "/dashboard" ? "bg-[#5247D1] text-white" : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
            <img src={DashIcon} alt="" className="w-4"/>
            <span>Dashboard</span> 
-        </button>
-        <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
+        </Link>
+        <Link to="/listusers" className={`flex ${route === "/listusers"? "bg-[#5247D1] text-white " : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
            <img src={UserIcon} alt="" className="w-4"/>
            <span>Users</span> 
-        </button>
+        </Link>
         <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
            <img src={EmployeeIcon} alt="" className="w-4"/>
            <span>Employee</span> 

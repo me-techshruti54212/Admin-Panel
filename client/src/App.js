@@ -6,12 +6,13 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import ManageTemplates from "./pages/ManageTemplates/ManageTemplates";
 import EditTemplate from "./pages/EditTemplate/EditTemplate";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import New from "./pages/List Users/New";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/listusers" element={<ListUser />} />
+        <Route path="/listusers" element={<New />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/manage-templates" element={<ManageTemplates/>} />
         <Route path="/edit-template" element={<EditTemplate/>} />
