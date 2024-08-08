@@ -1,6 +1,6 @@
 import React from 'react'
 import UserIcon from "../../assets/icons/Users.svg";
-function DashCard({title, number}) {
+function DashCalendarCard({title}) {
   return (
     <>
     <div className='bg-white relative rounded-lg border p-2 w-full'>
@@ -13,12 +13,12 @@ function DashCard({title, number}) {
             </div>
             <div className='flex flex-col gap-2 text-right'>
                 <span className='text-[10px]'>{title || "Sample Text"}</span>
-                <span className='font-semibold'>{number || "007"}</span>
             </div>
         </div>
+        <input type="date" className='w-5 h-5 absolute bottom-1 right-1'/>
     </div>
     </>
   )
 }
 
-export default DashCard
+export default DashCalendarCard

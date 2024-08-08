@@ -4,6 +4,7 @@ import DashCard from "../../components/Dashboard/DashCard";
 import PieChart from "../../components/Dashboard/PieChart";
 import LineChart from "../../components/Dashboard/LineChart";
 import Sidebar from "../../components/Sidebar";
+import DashCalendarCard from "../../components/Dashboard/DashCalendarCard";
 
 const Dashboard = () => {
   const PieChartData = [
@@ -47,10 +48,10 @@ const Dashboard = () => {
         <div className="flex flex-col w-full">
           <div className="grid grid-cols-8 gap-2 p-2 pt-4 w-full">
             <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
+            <DashCalendarCard />
+            <DashCalendarCard />
+            <DashCalendarCard />
+            <DashCalendarCard />
             <DashCard />
             <DashCard />
             <DashCard />
