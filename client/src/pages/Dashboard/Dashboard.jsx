@@ -38,31 +38,31 @@ const Dashboard = () => {
         34243, 31050, 33099, 33473,
       ],
     }
-  ] 
+  ];
 
   return (
     <>
       <NavBar />
       <div className="w-full flex">
-        <Sidebar/>
+        <Sidebar />
         <div className="flex flex-col w-full">
           <div className="grid grid-cols-8 gap-2 p-2 pt-4 w-full">
-            <DashCard />
-            <DashCalendarCard />
-            <DashCalendarCard />
-            <DashCalendarCard />
-            <DashCalendarCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
-            <DashCard />
+            <DashCard title="Total Users" number="1000" />
+            <DashCalendarCard title="Total Users" number="1000" />
+            <DashCalendarCard title="Total Users" number="1000" />
+            <DashCalendarCard title="Total Users" number="1000" />
+            <DashCalendarCard title="Total Users" number="1000" />
+            <DashCard title="Active Users" number="750" />
+            <DashCard title="New Users" number="250" />
+            <DashCard title="Revenue" number="$10,000" />
+            <DashCard title="Expenses" number="$5,000" />
+            <DashCard title="Profits" number="$5,000" />
+            <DashCard title="Customer Support" number="95%" />
+            <DashCard title="Development" number="90%" />
+            <DashCard title="Sales" number="85%" />
+            <DashCard title="Marketing" number="80%" />
+            <DashCard title="Growth" number="20%" />
+            <DashCard title="Feedback" number="Positive" />
           </div>
           <div className="grid grid-cols-2 w-full p-2">
             <PieChart
@@ -81,7 +81,14 @@ const Dashboard = () => {
             />
           </div>
           <div className="w-full p-2">
-            <LineChart containerId={"lineChartContainer"} title={"Images V/s Videos"} subtitle={"Images and videos uploaded by users"} seriesData={LineChartData} xAxisDescription={"Images"} yAxisTitle={"Videos"}/>
+            <LineChart 
+              containerId={"lineChartContainer"} 
+              title={"Images V/s Videos"} 
+              subtitle={"Images and videos uploaded by users"} 
+              seriesData={LineChartData} 
+              xAxisDescription={"Images"} 
+              yAxisTitle={"Videos"}
+            />
           </div>
         </div>
       </div>

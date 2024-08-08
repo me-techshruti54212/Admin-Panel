@@ -7,13 +7,13 @@ function DashCard({title, number}) {
             <img src={UserIcon} alt="" />
         </div>
         <div className="grid grid-cols-2">
-        <div className='flex flex-col opacity-0'>
+        {/* <div className='flex flex-col opacity-0'>
                 <span>TEXT</span>
                 <span>001</span>
-            </div>
+            </div> */}
             <div className='flex flex-col gap-2 text-right'>
-                <span className='text-[10px]'>Sample Text</span>
-                <span className='font-semibold'>007</span>
+                <span className='text-[10px]'>{title}</span>
+                <span className='font-semibold'>{number}</span>
             </div>
         </div>
     </div>
