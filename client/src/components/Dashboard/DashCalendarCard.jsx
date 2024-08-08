@@ -1,23 +1,24 @@
-import React from 'react';
+import React from 'react'
 import UserIcon from "../../assets/icons/Users.svg";
-function DashCard({title, number}) {
+function DashCalendarCard({title}) {
   return (
+    <>
     <div className='bg-white relative rounded-lg border p-2 w-full'>
         <div className="absolute rounded-md border bg-white h-8 w-8 -top-2 flex justify-center items-center">
             <img src={UserIcon} alt="" />
         </div>
         <div className="grid grid-cols-2">
-        <div className='flex flex-col opacity-0'>
-                <span>TEXT</span>
-                <span>001</span>
+            <div>
+                {/* Empty Div */}
             </div>
             <div className='flex flex-col gap-2 text-right'>
-                <span className='text-[10px]'>Sample Text</span>
-                <span className='font-semibold'>007</span>
+                <span className='text-[10px]'>{title || "Sample Text"}</span>
             </div>
         </div>
+        <input type="date" className='w-5 h-5 absolute bottom-1 right-1'/>
     </div>
-  );
+    </>
+  )
 }
 
-export default DashCard;
+export default DashCalendarCard
