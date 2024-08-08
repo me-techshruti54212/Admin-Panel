@@ -6,13 +6,9 @@ function DashCard({title, number}) {
         <div className="absolute rounded-md border bg-white h-8 w-8 -top-2 flex justify-center items-center">
             <img src={UserIcon} alt="" />
         </div>
-        <div className="grid grid-cols-2">
-        {/* <div className='flex flex-col opacity-0'>
-                <span>TEXT</span>
-                <span>001</span>
-            </div> */}
+        <div className="flex justify-end">
             <div className='flex flex-col gap-2 text-right'>
-                <span className='text-[10px]'>{title}</span>
+                <span className='text-[12px]'>{title}</span>
                 <span className='font-semibold'>{number}</span>
             </div>
         </div>
