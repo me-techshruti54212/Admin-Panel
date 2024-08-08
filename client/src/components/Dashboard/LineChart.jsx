@@ -1,7 +1,16 @@
 import React, { useEffect } from "react";
 import Highcharts from "highcharts";
 
-const LineChart = ({ containerId, title, subtitle, seriesData, xAxisDescription, yAxisTitle }) => {
+const LineChart = ({
+  containerId,
+  title,
+  subtitle,
+  seriesData,
+  xAxisDescription,
+  yAxisTitle,
+  startDate,
+  endDate,
+}) => {
   useEffect(() => {
     Highcharts.chart(containerId, {
       title: {
@@ -21,8 +30,11 @@ const LineChart = ({ containerId, title, subtitle, seriesData, xAxisDescription,
       },
 
       xAxis: {
-        accessibility: {
-          rangeDescription: xAxisDescription,
+        type: "datetime", // Use datetime for date-based x-axis
+        min: Date.parse(startDate), // Start date as a timestamp
+        max: Date.parse(endDate),   // End date as a timestamp
+        title: {
+          text: xAxisDescription, // Description for the x-axis
         },
       },
 
@@ -37,11 +49,14 @@ const LineChart = ({ containerId, title, subtitle, seriesData, xAxisDescription,
           label: {
             connectorAllowed: false,
           },
-          pointStart: 2010,
+          pointStart: Date.parse(startDate), 
         },
       },
 
-      series: seriesData,
+      series: seriesData.map((series) => ({
+        ...series,
+        data: series.data.map(([date, value]) => [Date.parse(date), value]), 
+      })),
 
       responsive: {
         rules: [
@@ -60,7 +75,16 @@ const LineChart = ({ containerId, title, subtitle, seriesData, xAxisDescription,
         ],
       },
     });
-  }, [containerId, title, subtitle, seriesData, xAxisDescription, yAxisTitle]);
+  }, [
+    containerId,
+    title,
+    subtitle,
+    seriesData,
+    xAxisDescription,
+    yAxisTitle,
+    startDate,
+    endDate,
+  ]);
 
   return <div id={containerId} />;
 };
