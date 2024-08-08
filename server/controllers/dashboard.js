@@ -71,7 +71,7 @@ async function dashboard(req, res) {
         SELECT 
             s.name, 
             COUNT(ps.user_id) AS user_count, 
-            (COUNT(ps.user_id) * 100.0 / (SELECT COUNT(DISTINCT user_id) FROM profile_skills)) AS percentage 
+            ROUND((CAST(COUNT(ps.user_id) AS FLOAT) * 100.0 / (SELECT COUNT(DISTINCT user_id) FROM profile_skills)), 2) AS percentage 
         FROM 
             skills s 
         LEFT JOIN 
@@ -94,7 +94,7 @@ async function dashboard(req, res) {
         SELECT 
             ic.name AS category_name,
             COUNT(DISTINCT pi.user_id) AS user_count,
-            (COUNT(DISTINCT pi.user_id) * 100.0 / (SELECT COUNT(DISTINCT user_id) FROM profile_interests)) AS percentage
+            ROUND(CAST(COUNT(DISTINCT pi.user_id) AS FLOAT) * 100.0 / (SELECT COUNT(DISTINCT user_id) FROM profile_interests), 2) AS percentage
         FROM 
             interest_categories ic
         JOIN 
@@ -103,6 +103,7 @@ async function dashboard(req, res) {
             profile_interests pi ON i.id = pi.interest_id
         GROUP BY 
             ic.name;
+
     `;
     const [categoriesRows] = await db.query(categoriesQuery);
 
