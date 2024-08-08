@@ -1,6 +1,6 @@
 const db = require("../config/database.js");
 
-async function userBasicDetails(req, res) {
+async function dashboard(req, res) {
   try {
     // Query to get total users and total users created today
     const usersQuery = `
@@ -183,4 +183,4 @@ async function userBasicDetails(req, res) {
   }
 }
 
-module.exports = { userBasicDetails };
+module.exports = { dashboard };
