@@ -292,3 +292,7 @@ label {
   }
 }
 /* Sidebar Css ends */
+
+.highcharts-credits{
+  display: none;
+}
