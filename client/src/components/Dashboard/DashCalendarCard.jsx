@@ -14,7 +14,7 @@ function DashCalendarCard({title, number}) {
 
             </div>
         </div>
-        <input type="date" className='w-5 h-5 float-right'/>
+        <input type="date" className='w-5 h-5 float-right' min={"2024-04-02"}/>
     </div>
     </>
   )
