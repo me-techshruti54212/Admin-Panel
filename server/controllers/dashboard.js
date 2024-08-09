@@ -22,6 +22,7 @@ async function dashboard(req, res) {
         FROM all_posts;
     `;
     const [postsRows] = await db.query(postsQuery);
+    let total_engagement = (postsRows[0].total_posts || 0) / ((postsRows[0].total_likes || 0) + (postsRows[0].total_comments || 0) + (postsRows[0].total_shares || 0) || 1);
 
     // Query to count the number of complete and incomplete users
     const profileStatusQuery = `
@@ -66,7 +67,7 @@ async function dashboard(req, res) {
         }
     });
 
-    // Query to get skill names and their respective user counts
+    // Query to get skill names and their respective user counts fro pie chart
     const skillsQuery = `
         SELECT 
             s.name, 
@@ -89,7 +90,7 @@ async function dashboard(req, res) {
         userCounts.push(row.percentage);
     });
 
-    // Query to get interest category names and their respective user counts
+    // Query to get interest category names and their respective user counts for pie chart
     const categoriesQuery = `
         SELECT 
             ic.name AS category_name,
@@ -129,7 +130,6 @@ async function dashboard(req, res) {
     `;
     const [connectionsRows] = await db.query(connectionsQuery);
 
-    // Initialize connection status counts
     let pendingCount = 0;
     let acceptedCount = 0;
     let rejectedCount = 0;
@@ -158,13 +158,41 @@ async function dashboard(req, res) {
     `;
     const [reportedUsersRows] = await db.query(reportedUsersQuery);
 
+    // Query to get daily video and photo counts for line chart
+    const mediaPostsQuery = `
+    SELECT 
+        DATE_FORMAT(created_at, '%Y-%m-%d') AS date, 
+        CAST(SUM(CASE WHEN post_type = 'video' THEN 1 ELSE 0 END) AS UNSIGNED) AS video_count, 
+        CAST(SUM(CASE WHEN post_type = 'post' THEN 1 ELSE 0 END) AS UNSIGNED) AS photo_count 
+    FROM 
+        all_posts 
+    GROUP BY 
+        DATE_FORMAT(created_at, '%Y-%m-%d') 
+    ORDER BY 
+        date;
+
+`;
+
+const [mediaPostsRows] = await db.query(mediaPostsQuery);
+
+const videosData = [];
+const photosData = [];
+
+mediaPostsRows.forEach(row => {
+    videosData.push([row.date, row.video_count]); 
+    photosData.push([row.date, row.photo_count]); 
+});
+
+
+
     res.status(200).json({
         total_users: usersRows[0].total_users,
         total_users_today: usersRows[0].total_users_today,
-        total_likes: postsRows[0].total_likes,
-        total_comments: postsRows[0].total_comments,
-        total_shares: postsRows[0].total_shares,
+        // total_likes: postsRows[0].total_likes,
+        // total_comments: postsRows[0].total_comments,
+        // total_shares: postsRows[0].total_shares,
         total_posts: postsRows[0].total_posts,
+        total_engagement: total_engagement,
         total_posts_today: postsRows[0].total_posts_today,
         complete_profiles: completeUsers,
         incomplete_profiles: incompleteUsers,
@@ -176,7 +204,9 @@ async function dashboard(req, res) {
         accepted_count: acceptedCount,
         rejected_count: rejectedCount,
         reported_posts_count: reportedPostsRows[0].reported_posts_count,
-        reported_users_count: reportedUsersRows[0].reported_users_count
+        reported_users_count: reportedUsersRows[0].reported_users_count,
+        videos_count: videosData,
+        photos_count: photosData,
     });
   } catch (error) {
     console.error("Error fetching user details:", error);
