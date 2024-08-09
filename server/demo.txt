@@ -36,3 +36,15 @@ async function getUserSpecificConnections(req, res) {
 }
 
 module.exports = { getUserSpecificConnections };
+
+
+SELECT 
+    DATE(created_at) AS date,
+    SUM(CASE WHEN post_type = 'video' THEN 1 ELSE 0 END) AS video_count,
+    SUM(CASE WHEN post_type = 'post' THEN 1 ELSE 0 END) AS photo_count
+FROM 
+    all_posts
+GROUP BY 
+    DATE(created_at)
+ORDER BY 
+    DATE(created_at);

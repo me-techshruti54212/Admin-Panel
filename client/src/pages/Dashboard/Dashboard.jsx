@@ -39,14 +39,14 @@ const Dashboard = () => {
     name: name,
     y: dashboardData.skill_user_counts[index],
   }));
-  console.log("PieChartData:", skillsPieChartData);
+  // console.log("PieChartData:", skillsPieChartData);
   const interestPieChartData = dashboardData.category_names.map(
     (name, index) => ({
       name: name,
       y: dashboardData.category_percentages[index],
     })
   );
-  console.log("PieChartData:", interestPieChartData);
+  // console.log("PieChartData:", interestPieChartData);
   const LineChartData = [
     {
       name: "Videos",
@@ -89,7 +89,7 @@ const Dashboard = () => {
             />
             <DashCard
               title="Schedule Meetings"
-              number={dashboardData.total_shares}
+              number= '0'
             />
             <DashCard
               title="Pending Connections"
