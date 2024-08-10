@@ -10,6 +10,7 @@ import ReportIcon from "../assets/icons/Reported.svg";
 import SettingsIcon from "../assets/icons/Settings.svg";
 import WithdrawIcon from "../assets/icons/Withdraw.svg";
 import EmployeeIcon from "../assets/icons/Employee.svg";
+import connectionRequestIcon from "../assets/icons/connectionRequest.svg";
 
 const Sidebar = () => {
    const route=window.location.pathname;
@@ -53,6 +54,10 @@ const Sidebar = () => {
            <img src={ManageTestimonialsIcon} alt="" className="w-4"/>
            <span>Manage Testimonials</span> 
         </button>
+        <Link to="/connection-requests" className={`flex ${route === "/connection-requests" ? "bg-[#5247D1] text-white" : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
+           <img src={connectionRequestIcon} alt="" className="w-4"/>
+           <span>All Connection Requests</span> 
+        </Link>
         <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
            <img src={SettingsIcon} alt="" className="w-4"/>
            <span>Manage Settings</span> 

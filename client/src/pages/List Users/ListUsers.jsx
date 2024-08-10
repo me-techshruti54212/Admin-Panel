@@ -1,19 +1,19 @@
-import React from "react";
-import Header from "../../components/Header";
-import UserDataRow from "../../components/ListUsers/UserDataRow";
-import PaginationBar from "../../components/ListUsers/PaginationBar";
-import SearchSection from "../../components/ListUsers/SearchSection";
-import Sidebar from "../../components/Sidebar";
-const ListUser = () => {
+import React from 'react'
+import NavBar from '../../components/NavBar'
+import Sidebar from '../../components/Sidebar'
+import UserDataRow from '../../components/ListUsers/UserDataRow'
+import SearchSection from '../../components/ListUsers/SearchSection'
+import PaginationBar from '../../components/ListUsers/PaginationBar'
+
+const ListUsers = () => {
   return (
     <>
-      <Header />
-      <div className="flex justify-between px-12">
-
-        <Sidebar />
-        <div>
+    <NavBar/>
+    <div className="flex">
+        <Sidebar/>
+        <div className="flex flex-col w-full">
         <div className="p-2.5 rounded-md bg-white m-3 shadow-sm">
-          <h1 className="bg-[#214139] text-white text-left py-1.5 pl-5 text-base">
+          <h1 className="bg-[#DBE3FF] text-left py-1.5 pl-5 text-base">
             LIST USERS
           </h1>
           <SearchSection />
@@ -47,10 +47,10 @@ const ListUser = () => {
             </div>
           </div>
         </div>
-      </div>
-      </div>
+        </div>
+    </div>
     </>
-  );
-};
+  )
+}
 
-export default ListUser;
+export default ListUsers
