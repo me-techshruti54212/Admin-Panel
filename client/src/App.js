@@ -7,14 +7,14 @@ import ManageTemplates from "./pages/ManageTemplates/ManageTemplates";
 import EditTemplate from "./pages/EditTemplate/EditTemplate";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import ConnectionRequests from "./pages/ConnectionRequests/ConnectionRequests";
+import Profile from "./pages/Profile/Profile";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/users" element={<ListUsers />} >
-          <Route path="/users/profile" element={<ManageTemplates/>}/>
-        </Route>
+        <Route path="/users" element={<ListUsers />} />
+        <Route path="/users/profile" element={<Profile/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/manage-templates" element={<ManageTemplates/>} />
         <Route path="/edit-template" element={<EditTemplate/>} />

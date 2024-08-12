@@ -4,7 +4,7 @@ import ActionButton from "./ActionButton";
 const UserDataRow = ({index, userId, Name, Email, Mobile, type, createdAt}) => {
   return (
     <>
-      <div className='bg-white border flex shadow-md'>
+      <div className='bg-white border flex shadow-md connectionRequest-UserDataRow'>
         <div className='border w-1/6 p-2'>{index}</div>
         <div className='border w-1/6 p-2'>{userId}</div>
         <div className='border w-1/6 p-2'>{Name}</div>
