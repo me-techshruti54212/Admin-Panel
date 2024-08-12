@@ -22,7 +22,7 @@ const Sidebar = () => {
            <img src={DashIcon} alt="" className="w-4"/>
            <span>Dashboard</span> 
         </Link>
-        <Link to="/listusers" className={`flex ${route === "/listusers"? "bg-[#5247D1] text-white " : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
+        <Link to="/users" className={`flex ${route === "/users"? "bg-[#5247D1] text-white " : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
            <img src={UserIcon} alt="" className="w-4"/>
            <span>Users</span> 
         </Link>

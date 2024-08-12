@@ -12,7 +12,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/listusers" element={<ListUsers />} />
+        <Route path="/users" element={<ListUsers />} >
+          <Route path="/users/profile" element={<ManageTemplates/>}/>
+        </Route>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/manage-templates" element={<ManageTemplates/>} />
         <Route path="/edit-template" element={<EditTemplate/>} />
