@@ -56,7 +56,7 @@ const Sidebar = () => {
         </button>
         <Link to="/connection-requests" className={`flex ${route === "/connection-requests" ? "bg-[#5247D1] text-white" : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
            <img src={connectionRequestIcon} alt="" className="w-4"/>
-           <span>All Connection Requests</span> 
+           <span>Connection Requests</span> 
         </Link>
         <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
            <img src={SettingsIcon} alt="" className="w-4"/>
