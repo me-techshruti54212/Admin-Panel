@@ -7,6 +7,7 @@ import ManageTemplates from "./pages/ManageTemplates/ManageTemplates";
 import EditTemplate from "./pages/EditTemplate/EditTemplate";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import ConnectionRequests from "./pages/ConnectionRequests/ConnectionRequests";
+import ReportedPosts from "./pages/ReportedPost/ReportedPost";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/edit-template" element={<EditTemplate/>} />
         <Route path="/change-password" element={<ChangePassword/>} />
         <Route path="/connection-requests" element={<ConnectionRequests/>}/>
+        <Route path="/reported-post" element={<ReportedPosts/>}/>
       </Routes>
     </BrowserRouter>
   );
