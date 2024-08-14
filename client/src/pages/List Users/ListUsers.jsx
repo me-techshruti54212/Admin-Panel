@@ -60,20 +60,27 @@ const ListUsers = () => {
       <div className="flex">
         <Sidebar />
         <div className="p-4 w-full flex flex-col gap-4 relative">
+          <div className="flex justify-between">
           <h1 className="text-2xl">All Connection Requests</h1>
+          <form className='gap-4 flex items-center'>
+            <label className='text-lg'>Search</label>
+            <input type="text" className="text-base p-1 border rounded-md w-4/5 bg-gradient-to-b from-slate-100 to-white" placeholder='Type here' />
+            <button className='bgPrimary p-2 rounded-lg text-white'>Search</button>
+          </form>
+          </div>
           <TableHeading />
           <div className="bg-white min-h-96 max-h-[75vh] h-full overflow-y-scroll overflow-x-hidden connectionRequest-container shadow-xl">
             {usersData.map(
-              ({ userId, Name, Email, Mobile, type, createdAt }, index) => (
+              ({ id, username, name, email, mobile_number, type, created_at }, index) => (
                 <UserDataRow
-                  key={index}
+                  key={username}
                   index={index + 1}
-                  userId={userId}
-                  Name={Name}
-                  Email={Email}
-                  Mobile={Mobile}
+                  userId={username}
+                  Name={name}
+                  Email={email}
+                  Mobile={mobile_number}
                   type={type}
-                  createdAt={createdAt}
+                  createdAt={created_at}
                 />
               )
             )}
