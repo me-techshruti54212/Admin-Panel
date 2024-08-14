@@ -295,4 +295,19 @@ label {
 
 .highcharts-credits{
   display: none;
+
 }
+
+.connectionRequest-UserDataRow:nth-child(odd){
+  background-color: #DBE3FF9C !important;
+}
+
+.connectionRequest-container::-webkit-scrollbar,.tab div::-webkit-scrollbar{
+  width: 2px !important;
+}
+
+.meetingList-UserDataRow:nth-child(odd){
+  background-color: #DBE3FF9C !important;
+
+}
+
