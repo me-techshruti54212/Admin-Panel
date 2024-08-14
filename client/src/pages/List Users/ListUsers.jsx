@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
+import { useLocation, useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 import Sidebar from '../../components/Sidebar';
 import TableHeading from "../../components/ListUsers/TableHeading";
@@ -36,6 +36,7 @@ const ListUsers = () => {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         setUsersData(data.users_table_data);
         setTotalPages(data.pagination.total_pages);
       })
@@ -64,23 +65,22 @@ const ListUsers = () => {
           <TableHeading />
           <div className="bg-white min-h-96 max-h-[75vh] h-full overflow-y-scroll overflow-x-hidden connectionRequest-container shadow-xl">
             {usersData.map(
-              ({ userId, Name, Email, Mobile, type, createdAt }, index) => (
+              ({ id, username, email, mobile_number, verified_status, created_at }, index) => (
                 <UserDataRow
                   key={index}
                   index={index + 1}
-                  userId={userId}
-                  Name={Name}
-                  Email={Email}
-                  Mobile={Mobile}
-                  type={type}
-                  createdAt={createdAt}
+                  userId={id}                
+                  Name={username}                
+                  Email={email}              
+                  Mobile={mobile_number}      
+                  type={verified_status}      
+                  createdAt={created_at}      
                 />
               )
             )}
           </div>
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 };
