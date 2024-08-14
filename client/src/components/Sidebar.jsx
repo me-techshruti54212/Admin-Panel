@@ -38,10 +38,10 @@ const Sidebar = () => {
            <img src={WithdrawIcon} alt="" className="w-4"/>
            <span>Withdraw List</span> 
         </button>
-        <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
+        <Link to="/reported-post" className={`flex ${route === "/reported-post"? "bg-[#5247D1] text-white " : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
            <img src={ReportIcon} alt="" className="w-4"/>
            <span>Reported Post List</span> 
-        </button>
+        </Link>
         <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
            <img src={ChangePasswordIcon} alt="" className="w-4"/>
            <span>Change Password</span> 
