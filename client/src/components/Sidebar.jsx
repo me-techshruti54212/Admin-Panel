@@ -42,10 +42,10 @@ const Sidebar = () => {
            <img src={ReportIcon} alt="" className="w-4"/>
            <span>Reported Post List</span> 
         </Link>
-        <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
+        <Link to="/change-password" className={`flex ${route === "/change-password"? "bg-[#5247D1] text-white " : "bg-white text-black hover:bg-indigo-100"} gap-2 p-2 w-full items-center `}>
            <img src={ChangePasswordIcon} alt="" className="w-4"/>
            <span>Change Password</span> 
-        </button>
+        </Link>
         <button className='flex text-black gap-2 p-2 w-full items-center hover:bg-indigo-100'>
            <img src={ManageTemplateIcon} alt="" className="w-4"/>
            <span>Manage Templates</span> 
