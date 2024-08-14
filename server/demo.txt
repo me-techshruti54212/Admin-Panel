@@ -1,0 +1,50 @@
+// For Connecttion Initiated and connection total_connections_received
+
+const db = require("../config/database.js");
+
+async function getUserSpecificConnections(req, res) {
+    const userId = req.params.user_id;
+
+    if (!userId) {
+        return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    try {
+        const userSpecificConnectionsQuery = `
+            SELECT 
+                ? AS user_id,
+                (SELECT COUNT(*) FROM connections WHERE connector_id = ?) AS total_connections_initiated,
+                (SELECT COUNT(*) FROM connections WHERE connectee_id = ?) AS total_connections_received
+            FROM dual;
+        `;
+
+        // Execute the query with parameter binding
+        const [results] = await db.query(userSpecificConnectionsQuery, [userId, userId, userId]);
+
+        // Check if results were found
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'No connections found for this user' });
+        }
+
+        // Send the results as a JSON response
+        res.status(200).json(results[0]);
+    } catch (error) {
+        // Handle any errors that occur during the query execution
+        console.error('Error fetching user-specific connections:', error);
+        res.status(500).json({ error: 'An error occurred while fetching user-specific connections' });
+    }
+}
+
+module.exports = { getUserSpecificConnections };
+
+
+SELECT 
+    DATE(created_at) AS date,
+    SUM(CASE WHEN post_type = 'video' THEN 1 ELSE 0 END) AS video_count,
+    SUM(CASE WHEN post_type = 'post' THEN 1 ELSE 0 END) AS photo_count
+FROM 
+    all_posts
+GROUP BY 
+    DATE(created_at)
+ORDER BY 
+    DATE(created_at);
