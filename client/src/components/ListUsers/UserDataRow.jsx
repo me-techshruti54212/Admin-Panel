@@ -1,28 +1,21 @@
-import React from 'react'
+import React from "react";
+import ActionButton from "./ActionButton";
 
-const UserDataRow = ({number, username, firstName, lastName, email, type, payStat, action}) => {
+const UserDataRow = ({index, userId, Name, Email, Mobile, type, createdAt}) => {
   return (
     <>
-    <div className="bg-white font-normal border-t-[1px] border-slate-200 flex justify-evenly border">
-              <span>{number || "1"}</span>
-              <span>{username || "TestBruc3"}</span>
-              <span>{firstName || "Test99"}</span>
-              <span>{lastName || "Test99"}</span>
-              <span>{email || "nigroid@h..	"}</span>
-              <span>{type ||"Principal"}</span>
-              <span>{payStat || "paid"}</span>
-              <span>{action || "action"}</span>
-              <span>{number || "1"}</span>
-              <span>{username || "TestBruc3"}</span>
-              <span>{firstName || "Test99"}</span>
-              <span>{lastName || "Test99"}</span>
-              <span>{email || "nigroid@h..	"}</span>
-              <span>{type ||"Principal"}</span>
-              <span>{payStat || "paid"}</span>
-              <span>{action || "action"}</span>
-            </div>
+      <div className='bg-white border flex shadow-md connectionRequest-UserDataRow'>
+        <div className='border w-1/6 p-2'>{index}</div>
+        <div className='border w-1/6 p-2'>{userId}</div>
+        <div className='border w-1/6 p-2'>{Name}</div>
+        <div className='border w-2/6 p-2'>{Email}</div>
+        <div className='border w-1/6 p-2'>{Mobile}</div>
+        <div className='border w-1/6 p-2'>{type}</div>
+        <div className='border w-1/6 p-2'>{createdAt}</div>
+        <div className='border w-1/6 p-2'><ActionButton/></div>
+    </div>
     </>
-  )
-}
+  );
+};
 
-export default UserDataRow
+export default UserDataRow;
